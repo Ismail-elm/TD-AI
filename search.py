@@ -122,8 +122,8 @@ def breadth_first_search(
     if start == goal:
         return [start]
 
-    frontier = deque([start])                      # file FIFO
-    parents: dict[State, State | None] = {start: None}   # sert aussi de "visited"
+    frontier = deque([start])                      
+    parents: dict[State, State | None] = {start: None}   
 
     while frontier:
         current = frontier.popleft()
@@ -134,7 +134,7 @@ def breadth_first_search(
 
             parents[neighbor] = current
 
-            if neighbor == goal:                   # test au moment de la découverte
+            if neighbor == goal:                   
                 return _reconstruct_path(parents, goal)
 
             frontier.append(neighbor)
@@ -148,7 +148,7 @@ def depth_first_search(
     goal: State,
 ) -> list[State]:
     """Return a path using Depth-First Search."""
-    frontier = [start]                             # pile LIFO (liste Python)
+    frontier = [start]                             
     parents: dict[State, State | None] = {start: None}
 
     while frontier:
